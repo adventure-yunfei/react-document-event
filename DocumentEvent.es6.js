@@ -14,10 +14,6 @@ const reactEventMap = {
 };
 
 export default class DocumentEvent extends Component {
-    static propTypes = {
-        children: PropTypes.node
-    };
-
     componentDidMount() {
         const props = this.props;
         supportedEvents.map(evtName => {
