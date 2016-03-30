@@ -3,8 +3,8 @@ import {Component, Children, PropTypes} from 'react';
 const supportedEvents = ['onClick', 'onMouseUp', 'onMouseDown', 'onKeyUp', 'onKeyDown'];
 
 const _on_reg = /^on/;
-// map from react event name to actual browser event name
-// e.g. {"onMouseUp": "mouseup"}
+/** map from react event name to actual browser event name
+ * e.g. {"onMouseUp": "mouseup"} */
 const reactEventMap = supportedEvents.reduce((result, reactEvtName) => {
     result[reactEvtName] = reactEvtName.replace(_on_reg, '').toLowerCase();
     return result;
@@ -51,15 +51,31 @@ export default class DocumentEvent extends Component {
 
     componentWillUnmount() {
         const {_listeningEvents} = this;
-        for (let reactEvtName in _listeningEvents) {
+        Object.keys(_listeningEvents).forEach(reactEvtName => {
             const evtHandler = _listeningEvents[reactEvtName];
             if (evtHandler) {
                 window.removeEventListener(reactEventMap[reactEvtName], evtHandler);
             }
-        }
+        });
     }
 
     render() {
         return Children.only(this.props.children);
     }
+}
+
+
+/**
+ * Used to add more supported events that are not listed here
+ * Example Usage:
+ *   - extendSupportedEvents({ onDoubleClick: 'dblclick' });
+ * @param {Object} evtMap as format {<reactEvtName>: <actualEvtName>}
+ */
+export function extendSupportedEvents(evtMap = {}) {
+    Object.keys(evtMap).forEach(reactEvtName => {
+        if (supportedEvents.indexOf(reactEvtName) === -1) {
+            supportedEvents.push(reactEvtName);
+        }
+        reactEventMap[reactEvtName] = evtMap[reactEvtName];
+    });
 }
