@@ -1,4 +1,4 @@
-import {Component, PropTypes} from 'react';
+import {Component, Children, PropTypes} from 'react';
 
 const supportedEvents = ['onClick', 'onMouseUp', 'onMouseDown', 'onKeyUp', 'onKeyDown'];
 
@@ -60,6 +60,6 @@ export default class DocumentEvent extends Component {
     }
 
     render() {
-        return this.props.children;
+        return Children.only(this.props.children);
     }
 }
