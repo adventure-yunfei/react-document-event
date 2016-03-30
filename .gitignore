@@ -1,3 +1,5 @@
 node_modules/
-DocumentEvent.js
 .idea/
+
+DocumentEvent.js
+test/dist/
