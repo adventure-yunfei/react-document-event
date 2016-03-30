@@ -3,6 +3,10 @@
   "version": "0.0.3",
   "description": "Register event on document globally, and will remove it when that component unmounts",
   "main": "DocumentEvent.js",
+  "files": [
+    "DocumentEvent.es6.js",
+    "DocumentEvent.js"
+  ],
   "scripts": {
     "prepublish": "babel DocumentEvent.es6.js --out-file DocumentEvent.js"
   },
@@ -21,10 +25,6 @@
     "url": "https://github.com/adventure-yunfei/react-document-event/issues"
   },
   "homepage": "https://github.com/adventure-yunfei/react-document-event#readme",
-  "dependencies": {
-    "lodash": "^4.6.1",
-    "react-pure-render": "^1.0.2"
-  },
   "devDependencies": {
     "babel": "^5.8.38"
   }
