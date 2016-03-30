@@ -5,6 +5,7 @@ Provides a declarative way to bind event globally for a component.
 - It won't try event binding on server rendering so don't worry about that.
 - It manage event handlers automatically - binding on mount, unbinding on unmount, rebinding on update
 - All events can be supported, as there's a way to extend the supported event list
+- No dependency. (But of course you should have react...)
 - Test covered, which may make you more confident to use it :)
 
 # Install

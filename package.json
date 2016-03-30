@@ -1,6 +1,6 @@
 {
   "name": "react-document-event",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "Register event on document globally, and will remove it when that component unmounts",
   "main": "DocumentEvent.js",
   "files": [
